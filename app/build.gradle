@@ -1,0 +1,36 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.actualSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId "com.madden.ingot"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.actualSdkVersion
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation dependency.kotlinStdLib
+    implementation dependency.androidxKotlin
+    implementation dependency.coroutinesCore
+    implementation dependency.coroutinesAndroid
+    implementation dependency.constraintLayout
+    implementation dependency.fragment
+    implementation dependency.lifecycleVM
+    implementation dependency.material
+    implementation dependency.appCompat
+    implementation dependency.lifecycleExt
+}
